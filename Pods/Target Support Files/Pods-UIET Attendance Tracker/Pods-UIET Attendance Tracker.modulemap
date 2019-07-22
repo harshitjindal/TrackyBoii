@@ -1,0 +1,6 @@
+framework module Pods_UIET_Attendance_Tracker {
+  umbrella header "Pods-UIET Attendance Tracker-umbrella.h"
+
+  export *
+  module * { export * }
+}
