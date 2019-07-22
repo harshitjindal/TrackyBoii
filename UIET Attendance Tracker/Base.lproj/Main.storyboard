@@ -15,7 +15,26 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="1Nb-gN-ZtD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="WMF-cz-gnv"/>
+                                </constraints>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="584249400">
+                                    <!--2019-07-08 03:30:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="599466600">
+                                    <!--2019-12-31 06:30:00 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1Nb-gN-ZtD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2zW-SQ-CoX"/>
+                            <constraint firstItem="1Nb-gN-ZtD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="D7p-xF-Gq8"/>
+                            <constraint firstItem="1Nb-gN-ZtD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oI4-OS-IJ9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mark Attendance" image="checkmark.circle" catalog="system" id="rcF-g5-Q5n"/>
