@@ -11,7 +11,7 @@
         <!--Mark Attendance-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIET_Attendance_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MarkAttendanceViewController" customModule="UIET_Attendance_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,11 +32,37 @@
                                     <action selector="datePicker:" destination="BYZ-38-t0r" eventType="valueChanged" id="OjV-me-wgG"/>
                                 </connections>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xew-wK-L24">
+                                <rect key="frame" x="45" y="310" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fbu-JG-zra">
+                                <rect key="frame" x="259" y="260.5" width="150" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="EHo-Az-Xo1"/>
+                                    <constraint firstAttribute="height" constant="120" id="RYC-Rh-bZV"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbC-Hp-8qz">
+                                <rect key="frame" x="182" y="310" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1Nb-gN-ZtD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2zW-SQ-CoX"/>
+                            <constraint firstItem="Xew-wK-L24" firstAttribute="top" secondItem="1Nb-gN-ZtD" secondAttribute="bottom" constant="50" id="9Yv-Yz-Uue"/>
                             <constraint firstItem="1Nb-gN-ZtD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="D7p-xF-Gq8"/>
+                            <constraint firstItem="Fbu-JG-zra" firstAttribute="centerY" secondItem="dbC-Hp-8qz" secondAttribute="centerY" id="FXk-uz-L0o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fbu-JG-zra" secondAttribute="trailing" constant="5" id="Kds-12-xnW"/>
+                            <constraint firstItem="Xew-wK-L24" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="QpA-O6-MNJ"/>
+                            <constraint firstItem="dbC-Hp-8qz" firstAttribute="centerY" secondItem="Xew-wK-L24" secondAttribute="centerY" id="eIo-u3-LKZ"/>
+                            <constraint firstItem="dbC-Hp-8qz" firstAttribute="leading" secondItem="Xew-wK-L24" secondAttribute="trailing" constant="95" id="mqP-0M-dvR"/>
                             <constraint firstItem="1Nb-gN-ZtD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oI4-OS-IJ9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -45,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-264" y="847"/>
+            <point key="canvasLocation" x="-265.21739130434787" y="846.42857142857144"/>
         </scene>
         <!--View Record-->
         <scene sceneID="Qqc-iu-pIm">
