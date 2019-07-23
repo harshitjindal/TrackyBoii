@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		B36BFABE22DE1AE60044AA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36BFABD22DE1AE60044AA7C /* AppDelegate.swift */; };
-		B36BFAC022DE1AE60044AA7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36BFABF22DE1AE60044AA7C /* ViewController.swift */; };
+		B36BFAC022DE1AE60044AA7C /* MarkAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36BFABF22DE1AE60044AA7C /* MarkAttendanceViewController.swift */; };
 		B36BFAC322DE1AE60044AA7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B36BFAC122DE1AE60044AA7C /* Main.storyboard */; };
 		B36BFAC522DE1AE80044AA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B36BFAC422DE1AE80044AA7C /* Assets.xcassets */; };
 		B36BFAC822DE1AE80044AA7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B36BFAC622DE1AE80044AA7C /* LaunchScreen.storyboard */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		B36BFABA22DE1AE60044AA7C /* UIET Attendance Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIET Attendance Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36BFABD22DE1AE60044AA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B36BFABF22DE1AE60044AA7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B36BFABF22DE1AE60044AA7C /* MarkAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAttendanceViewController.swift; sourceTree = "<group>"; };
 		B36BFAC222DE1AE60044AA7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B36BFAC422DE1AE80044AA7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B36BFAC722DE1AE80044AA7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				B36BFABD22DE1AE60044AA7C /* AppDelegate.swift */,
-				B36BFABF22DE1AE60044AA7C /* ViewController.swift */,
+				B36BFABF22DE1AE60044AA7C /* MarkAttendanceViewController.swift */,
 				B36BFAC122DE1AE60044AA7C /* Main.storyboard */,
 				B36BFAC422DE1AE80044AA7C /* Assets.xcassets */,
 				B36BFAC622DE1AE80044AA7C /* LaunchScreen.storyboard */,
@@ -85,7 +85,6 @@
 				F1E15DFEA3880C48CAF7072E /* Pods-UIET Attendance Tracker.debug.xcconfig */,
 				E81D1A311C9F2ACDC53F03C3 /* Pods-UIET Attendance Tracker.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -204,7 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B36BFAC022DE1AE60044AA7C /* ViewController.swift in Sources */,
+				B36BFAC022DE1AE60044AA7C /* MarkAttendanceViewController.swift in Sources */,
 				B36BFABE22DE1AE60044AA7C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +352,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P3ZEN42ERU;
 				INFOPLIST_FILE = "UIET Attendance Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,6 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P3ZEN42ERU;
 				INFOPLIST_FILE = "UIET Attendance Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

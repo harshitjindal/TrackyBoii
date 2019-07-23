@@ -9,8 +9,10 @@
 import UIKit
 import UserNotifications
 
-class ViewController: UIViewController {
+class MarkAttendanceViewController: UIViewController {
 
+    var pickedDate: Date = Date.init()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
@@ -19,12 +21,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
-        sender.timeZone = .current
-        print(sender.date)
-  
+        pickedDate = Date.init(timeInterval: 19800, since: sender.date)
+        print(pickedDate)
+        
+        updateSubjects(pickedDate)
     }
-
-
+    
+    func updateSubjects(_ pickedDate: Date) {
+        
+    }
 
 }
 
