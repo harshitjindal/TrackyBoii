@@ -28,6 +28,9 @@
                                 <date key="maximumDate" timeIntervalSinceReferenceDate="599466600">
                                     <!--2019-12-31 06:30:00 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="datePicker:" destination="BYZ-38-t0r" eventType="valueChanged" id="OjV-me-wgG"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

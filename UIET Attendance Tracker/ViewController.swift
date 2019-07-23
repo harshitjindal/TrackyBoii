@@ -17,6 +17,13 @@ class ViewController: UIViewController {
             overrideUserInterfaceStyle = .light
         }
     }
+    
+    @IBAction func datePicker(_ sender: UIDatePicker) {
+        sender.timeZone = .current
+        print(sender.date)
+  
+    }
+
 
 
 }
