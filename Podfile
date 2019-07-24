@@ -5,6 +5,6 @@ target 'UIET Attendance Tracker' do
   use_frameworks!
 
   # Pods for UIET Attendance Tracker
-  pod 'Realm'
+  pod 'RealmSwift'
   
 end
