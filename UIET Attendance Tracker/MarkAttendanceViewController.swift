@@ -21,8 +21,10 @@ class MarkAttendanceViewController: UIViewController {
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
-        pickedDate = Date.init(timeInterval: 19800, since: sender.date)
-        print(pickedDate)
+        
+        pickedDate = sender.date.addingTimeInterval(19800)
+        let weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate)
+        print(weekDay)
         
         updateSubjects(pickedDate)
     }
