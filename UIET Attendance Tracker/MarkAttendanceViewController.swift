@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 
 class MarkAttendanceViewController: UIViewController {
+    
 
     var pickedDate: Date = Date.init()
     
@@ -35,3 +36,13 @@ class MarkAttendanceViewController: UIViewController {
 
 }
 
+extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath)
+        return cell
+    }
+}

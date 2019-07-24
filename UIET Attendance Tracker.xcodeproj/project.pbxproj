@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B31AC12422E8D48D00F61F65 /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31AC12322E8D48D00F61F65 /* SubjectTableViewCell.swift */; };
 		B36BFABE22DE1AE60044AA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36BFABD22DE1AE60044AA7C /* AppDelegate.swift */; };
 		B36BFAC022DE1AE60044AA7C /* MarkAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36BFABF22DE1AE60044AA7C /* MarkAttendanceViewController.swift */; };
 		B36BFAC322DE1AE60044AA7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B36BFAC122DE1AE60044AA7C /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B31AC12322E8D48D00F61F65 /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubjectTableViewCell.swift; path = "../../../../../../System/Volumes/Data/Users/harshitjindal/Desktop/iOS Dev Learning/UIET Attendance Tracker/UIET Attendance Tracker/SubjectTableViewCell.swift"; sourceTree = "<group>"; };
 		B36BFABA22DE1AE60044AA7C /* UIET Attendance Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIET Attendance Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36BFABD22DE1AE60044AA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B36BFABF22DE1AE60044AA7C /* MarkAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAttendanceViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				B36BFABD22DE1AE60044AA7C /* AppDelegate.swift */,
 				B36BFABF22DE1AE60044AA7C /* MarkAttendanceViewController.swift */,
 				B36BFAC122DE1AE60044AA7C /* Main.storyboard */,
+				B31AC12322E8D48D00F61F65 /* SubjectTableViewCell.swift */,
 				B36BFAC422DE1AE80044AA7C /* Assets.xcassets */,
 				B36BFAC622DE1AE80044AA7C /* LaunchScreen.storyboard */,
 				B36BFAC922DE1AE80044AA7C /* Info.plist */,
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B36BFAC022DE1AE60044AA7C /* MarkAttendanceViewController.swift in Sources */,
+				B31AC12422E8D48D00F61F65 /* SubjectTableViewCell.swift in Sources */,
 				B36BFABE22DE1AE60044AA7C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
