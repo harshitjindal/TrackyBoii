@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="280" width="414" height="533"/>
                                 <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="subjectCell" rowHeight="80" id="tv7-Pz-ajS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="subjectCell" rowHeight="80" id="tv7-Pz-ajS" customClass="SubjectTableViewCell" customModule="UIET_Attendance_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tv7-Pz-ajS" id="DT7-Og-vBn">
@@ -79,11 +79,15 @@
                                                 <constraint firstAttribute="trailing" secondItem="5UI-hX-es2" secondAttribute="trailing" constant="20" id="qnX-ZP-1vw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="SessionName" destination="qbq-Lv-E0V" id="AvX-vG-z0U"/>
+                                            <outlet property="SessionType" destination="JNa-fO-1bL" id="tun-1X-Z3V"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="bvQ-Fo-95H"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="uhf-yY-aEu"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ene-ZY-ZLt"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7R9-zX-7Ft"/>
                                 </connections>
                             </tableView>
                         </subviews>

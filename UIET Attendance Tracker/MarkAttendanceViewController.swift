@@ -42,7 +42,15 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as! SubjectTableViewCell
+        cell.SessionType.text = "Lecture"
+        cell.SessionName.text = "Network Security"
         return cell
     }
+}
+
+class SubjectTableViewCell: UITableViewCell {
+    @IBOutlet var SessionType: UILabel!
+    @IBOutlet var SessionName: UILabel!
+    
 }
