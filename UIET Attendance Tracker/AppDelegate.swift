@@ -19,6 +19,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        registerDailyNotifications()
+        return true
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+    }
+    
+    func registerDailyNotifications() {
         //Confirm Delegete and request for permission
         notificationCenter.delegate = self
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
@@ -37,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         dateComponents.calendar = Calendar.current
         
         dateComponents.hour = 17    // 17:00 hours
-//        let dateMatching = Calendar.current.dateComponents([.weekday, .hour], from: DateComponents(hour: 17))
+        //        let dateMatching = Calendar.current.dateComponents([.weekday, .hour], from: DateComponents(hour: 17))
         
         // Create the trigger as a repeating event.
         let trigger = UNCalendarNotificationTrigger(
@@ -55,25 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 print(error!.localizedDescription)
             }
         }
-        
-        
-        return true
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
     }
 
 
