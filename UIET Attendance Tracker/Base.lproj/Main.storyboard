@@ -109,6 +109,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mark Attendance" image="checkmark.circle" catalog="system" id="rcF-g5-Q5n"/>
+                    <connections>
+                        <outlet property="tableView" destination="BQm-yp-q1J" id="uS2-Ey-ecq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

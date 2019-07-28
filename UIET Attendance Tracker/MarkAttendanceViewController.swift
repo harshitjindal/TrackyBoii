@@ -14,6 +14,7 @@ class MarkAttendanceViewController: UIViewController {
     
     let realm = try! Realm()
 
+    @IBOutlet var tableView: UITableView!
     var pickedDate: Date = Date.init()
     var weekDay: Int = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
     var subjectString: Array<String>?
@@ -55,6 +56,7 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
             subjectString = ["NIL"]
         }
         //TODO: - RELOAD TABLEVIEW
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
