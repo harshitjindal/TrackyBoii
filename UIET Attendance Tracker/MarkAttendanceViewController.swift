@@ -60,7 +60,11 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return subjectString!.count
+        if subjectString!.contains("NIL") {
+            return 0
+        } else {
+            return subjectString!.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
