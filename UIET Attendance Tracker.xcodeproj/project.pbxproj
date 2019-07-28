@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B339F29E22E984E6007F3DCA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339F29D22E984E6007F3DCA /* Data.swift */; };
 		B36BFABE22DE1AE60044AA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36BFABD22DE1AE60044AA7C /* AppDelegate.swift */; };
 		B36BFAC022DE1AE60044AA7C /* MarkAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36BFABF22DE1AE60044AA7C /* MarkAttendanceViewController.swift */; };
 		B36BFAC322DE1AE60044AA7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B36BFAC122DE1AE60044AA7C /* Main.storyboard */; };
 		B36BFAC522DE1AE80044AA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B36BFAC422DE1AE80044AA7C /* Assets.xcassets */; };
 		B36BFAC822DE1AE80044AA7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B36BFAC622DE1AE80044AA7C /* LaunchScreen.storyboard */; };
+		B3D6434822EDD07A00CAE9BC /* TimeTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D6434722EDD07A00CAE9BC /* TimeTableData.swift */; };
+		B3D6434C22EDD0F900CAE9BC /* SubjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D6434B22EDD0F900CAE9BC /* SubjectData.swift */; };
 		D106D2E04BB6DCF944B43C1C /* Pods_UIET_Attendance_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5290E3896A581F7D837F96F /* Pods_UIET_Attendance_Tracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B339F29D22E984E6007F3DCA /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = "../../../../../../System/Volumes/Data/Users/harshitjindal/Desktop/iOS Dev Learning/UIET Attendance Tracker/UIET Attendance Tracker/Data.swift"; sourceTree = "<group>"; };
 		B36BFABA22DE1AE60044AA7C /* UIET Attendance Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIET Attendance Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36BFABD22DE1AE60044AA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B36BFABF22DE1AE60044AA7C /* MarkAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAttendanceViewController.swift; sourceTree = "<group>"; };
@@ -25,6 +25,8 @@
 		B36BFAC422DE1AE80044AA7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B36BFAC722DE1AE80044AA7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B36BFAC922DE1AE80044AA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3D6434722EDD07A00CAE9BC /* TimeTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableData.swift; sourceTree = "<group>"; };
+		B3D6434B22EDD0F900CAE9BC /* SubjectData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectData.swift; sourceTree = "<group>"; };
 		E5290E3896A581F7D837F96F /* Pods_UIET_Attendance_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIET_Attendance_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E81D1A311C9F2ACDC53F03C3 /* Pods-UIET Attendance Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIET Attendance Tracker.release.xcconfig"; path = "Target Support Files/Pods-UIET Attendance Tracker/Pods-UIET Attendance Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		F1E15DFEA3880C48CAF7072E /* Pods-UIET Attendance Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIET Attendance Tracker.debug.xcconfig"; path = "Target Support Files/Pods-UIET Attendance Tracker/Pods-UIET Attendance Tracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,7 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				B36BFABD22DE1AE60044AA7C /* AppDelegate.swift */,
-				B339F29D22E984E6007F3DCA /* Data.swift */,
+				B3D6434722EDD07A00CAE9BC /* TimeTableData.swift */,
+				B3D6434B22EDD0F900CAE9BC /* SubjectData.swift */,
 				B36BFABF22DE1AE60044AA7C /* MarkAttendanceViewController.swift */,
 				B36BFAC122DE1AE60044AA7C /* Main.storyboard */,
 				B36BFAC422DE1AE80044AA7C /* Assets.xcassets */,
@@ -207,8 +210,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B36BFAC022DE1AE60044AA7C /* MarkAttendanceViewController.swift in Sources */,
-				B339F29E22E984E6007F3DCA /* Data.swift in Sources */,
 				B36BFABE22DE1AE60044AA7C /* AppDelegate.swift in Sources */,
+				B3D6434C22EDD0F900CAE9BC /* SubjectData.swift in Sources */,
+				B3D6434822EDD07A00CAE9BC /* TimeTableData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,6 +66,9 @@
                                                         <segment title="Mass Bunk"/>
                                                         <segment title="No Lecture"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="segmentedControlIndex:" destination="tv7-Pz-ajS" eventType="valueChanged" id="oFs-DC-097"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -82,6 +85,7 @@
                                         <connections>
                                             <outlet property="SessionName" destination="qbq-Lv-E0V" id="AvX-vG-z0U"/>
                                             <outlet property="SessionType" destination="JNa-fO-1bL" id="tun-1X-Z3V"/>
+                                            <outlet property="segmentControlOutlet" destination="5UI-hX-es2" id="ipA-VM-n4r"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -38,14 +38,20 @@ class MarkAttendanceViewController: UIViewController {
 
 extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as! SubjectTableViewCell
         cell.SessionType.text = "Lecture"
         cell.SessionName.text = "Network Security"
+        
+        cell.segmentControlOutlet.tag = indexPath.row
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -53,4 +59,8 @@ class SubjectTableViewCell: UITableViewCell {
     @IBOutlet var SessionType: UILabel!
     @IBOutlet var SessionName: UILabel!
     
+    @IBOutlet var segmentControlOutlet: UISegmentedControl!
+    @IBAction func segmentedControlIndex(_ sender: UISegmentedControl) {
+        print("Cell \(sender.tag + 1) modified to \(sender.selectedSegmentIndex + 1)")
+    }
 }
