@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         do {
 //            print(Realm.Configuration.defaultConfiguration.fileURL)
-            let realm = try Realm()
+            _ = try Realm()
         } catch {
             print(error.localizedDescription)
         }

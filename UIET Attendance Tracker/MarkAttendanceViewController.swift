@@ -8,43 +8,63 @@
 
 import UIKit
 import UserNotifications
+import RealmSwift
 
 class MarkAttendanceViewController: UIViewController {
     
+    let realm = try! Realm()
 
     var pickedDate: Date = Date.init()
+    var weekDay: Int = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
+    var subjectString: Array<String>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
+        updateSubjects(weekDay)
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
         
         pickedDate = sender.date.addingTimeInterval(19800)
-        let weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate)
-        print(weekDay)
+        weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate)
+//        print(weekDay)
         
-        updateSubjects(pickedDate)
+        updateSubjects(weekDay)
     }
     
-    func updateSubjects(_ pickedDate: Date) {
-        
-    }
-
 }
 
 extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func updateSubjects(_ day: Int) {
+        switch day {
+        case 2:
+            subjectString = ["Database Management Systems", "Network Security and Cryptography", "Design and Analysis of Algorithms", "Python", "TUT Network Security and Cryptography", "TUT Design and Analysis of Algorithms"]
+        case 3:
+            subjectString = ["Wireless Communication", "Network Security and Cryptography", "Database Management Systems", "Python", "LAB Design and Analysis of Algorithms"]
+        case 4:
+            subjectString = ["LAB Database Management Systems", "Database Management Systems", "Design and Analysis of Algorithms", "Wireless Communication", "Wireless Communication"]
+        case 5:
+            subjectString = ["LAB Python", "Python", "TUT Database Management Systems"]
+        case 6:
+            subjectString = ["TUT Wireless Communication", "Python", "Network Security and Cryptography", "Design and Analysis of Algorithms", "LAB Wireless Communication"]
+        default:
+            subjectString = ["NIL"]
+        }
+        //TODO: - RELOAD TABLEVIEW
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return subjectString!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as! SubjectTableViewCell
-        cell.SessionType.text = "Lecture"
-        cell.SessionName.text = "Network Security"
+        cell.SessionType.text = ""
+        cell.SessionName.text = subjectString![indexPath.row]
         
         cell.segmentControlOutlet.tag = indexPath.row
         return cell
@@ -52,6 +72,18 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+}
+
+// TODO: - DATA HANDLING METHODS
+extension MarkAttendanceViewController {
+    func saveData(date: Date) {
+        
+    }
+    
+    func loadData(date: Date) {
+        
     }
 }
 
