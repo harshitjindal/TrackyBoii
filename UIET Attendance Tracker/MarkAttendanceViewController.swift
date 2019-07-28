@@ -15,15 +15,20 @@ class MarkAttendanceViewController: UIViewController {
     let realm = try! Realm()
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var datePicker: UIDatePicker!
+    
     var pickedDate: Date = Date.init()
     var weekDay: Int = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
-    var subjectString: Array<String>?
+    var subjectNameString: Array<String>?
+    var subjectTypeString: Array<String>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
+//        datePicker.setDate(Date.init(timeIntervalSince1970: 0), animated: false)
+//        datePicker.setDate(Date.init(), animated: true)
         updateSubjects(weekDay)
     }
     
@@ -43,34 +48,40 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
     func updateSubjects(_ day: Int) {
         switch day {
         case 2:
-            subjectString = ["Database Management Systems", "Network Security and Cryptography", "Design and Analysis of Algorithms", "Python", "TUT Network Security and Cryptography", "TUT Design and Analysis of Algorithms"]
+            subjectNameString = ["Database Management Systems", "Network Security and Cryptography", "Design and Analysis of Algorithms", "Python", "Network Security and Cryptography", "Design and Analysis of Algorithms"]
+            subjectTypeString = ["Lecture", "Lecture", "Lecture", "Lecture", "Tutorial", "Tutorial"]
         case 3:
-            subjectString = ["Wireless Communication", "Network Security and Cryptography", "Database Management Systems", "Python", "LAB Design and Analysis of Algorithms"]
+            subjectNameString = ["Wireless Communication", "Network Security and Cryptography", "Database Management Systems", "Python", "Design and Analysis of Algorithms"]
+            subjectTypeString = ["Lecture", "Lecture", "Lecture", "Lecture", "Lab"]
         case 4:
-            subjectString = ["LAB Database Management Systems", "Database Management Systems", "Design and Analysis of Algorithms", "Wireless Communication", "Wireless Communication"]
+            subjectNameString = ["Database Management Systems", "Database Management Systems", "Design and Analysis of Algorithms", "Wireless Communication", "Wireless Communication"]
+            subjectTypeString = ["Lab", "Lecture", "Lecture", "Lecture", "Lecture"]
         case 5:
-            subjectString = ["LAB Python", "Python", "TUT Database Management Systems"]
+            subjectNameString = ["Python", "Python", "Database Management Systems"]
+            subjectTypeString = ["Lab", "Lecture", "Tutorial"]
         case 6:
-            subjectString = ["TUT Wireless Communication", "Python", "Network Security and Cryptography", "Design and Analysis of Algorithms", "LAB Wireless Communication"]
+            subjectNameString = ["Wireless Communication", "Python", "Network Security and Cryptography", "Design and Analysis of Algorithms", "LAB Wireless Communication"]
+            subjectTypeString = ["Tutorial", "Lecture", "Lecture", "Lecture", "Lab"]
         default:
-            subjectString = ["NIL"]
+            subjectNameString = ["NIL"]
+            subjectTypeString = ["NIL"]
         }
         //TODO: - RELOAD TABLEVIEW
         tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if subjectString!.contains("NIL") {
+        if subjectNameString!.contains("NIL") {
             return 0
         } else {
-            return subjectString!.count
+            return subjectNameString!.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as! SubjectTableViewCell
-        cell.SessionType.text = ""
-        cell.SessionName.text = subjectString![indexPath.row]
+        cell.SessionType.text = subjectTypeString![indexPath.row]
+        cell.SessionName.text = subjectNameString![indexPath.row]
         
         cell.segmentControlOutlet.tag = indexPath.row
         return cell
