@@ -60,7 +60,7 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
             subjectNameString = ["Python", "Python", "Database Management Systems"]
             subjectTypeString = ["Lab", "Lecture", "Tutorial"]
         case 6:
-            subjectNameString = ["Wireless Communication", "Python", "Network Security and Cryptography", "Design and Analysis of Algorithms", "LAB Wireless Communication"]
+            subjectNameString = ["Wireless Communication", "Python", "Network Security and Cryptography", "Design and Analysis of Algorithms", "Wireless Communication"]
             subjectTypeString = ["Tutorial", "Lecture", "Lecture", "Lecture", "Lab"]
         default:
             subjectNameString = ["NIL"]
