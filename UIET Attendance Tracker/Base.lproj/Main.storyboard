@@ -33,7 +33,7 @@
                                 </connections>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BQm-yp-q1J">
-                                <rect key="frame" x="0.0" y="280" width="414" height="533"/>
+                                <rect key="frame" x="0.0" y="265" width="414" height="548"/>
                                 <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="subjectCell" rowHeight="80" id="tv7-Pz-ajS" customClass="SubjectTableViewCell" customModule="UIET_Attendance_Tracker" customModuleProvider="target">
@@ -50,7 +50,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbq-Lv-E0V">
-                                                    <rect key="frame" x="82.5" y="9.5" width="108" height="21"/>
+                                                    <rect key="frame" x="77.5" y="9.5" width="108" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -72,7 +72,7 @@
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qbq-Lv-E0V" firstAttribute="leading" secondItem="JNa-fO-1bL" secondAttribute="trailing" constant="15" id="45j-j0-Eab"/>
+                                                <constraint firstItem="qbq-Lv-E0V" firstAttribute="leading" secondItem="JNa-fO-1bL" secondAttribute="trailing" constant="10" id="45j-j0-Eab"/>
                                                 <constraint firstItem="qbq-Lv-E0V" firstAttribute="centerY" secondItem="JNa-fO-1bL" secondAttribute="centerY" id="6vY-C3-Nge"/>
                                                 <constraint firstItem="5UI-hX-es2" firstAttribute="top" secondItem="JNa-fO-1bL" secondAttribute="bottom" constant="10" id="8bi-bf-CPo"/>
                                                 <constraint firstItem="JNa-fO-1bL" firstAttribute="top" secondItem="DT7-Og-vBn" secondAttribute="top" constant="10" id="96D-bZ-SQF"/>
@@ -103,7 +103,7 @@
                             <constraint firstItem="1Nb-gN-ZtD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="D7p-xF-Gq8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BQm-yp-q1J" secondAttribute="trailing" id="Vij-TJ-Waa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BQm-yp-q1J" secondAttribute="bottom" id="YSx-So-pln"/>
-                            <constraint firstItem="BQm-yp-q1J" firstAttribute="top" secondItem="1Nb-gN-ZtD" secondAttribute="bottom" constant="20" id="f77-mA-GSH"/>
+                            <constraint firstItem="BQm-yp-q1J" firstAttribute="top" secondItem="1Nb-gN-ZtD" secondAttribute="bottom" constant="5" id="f77-mA-GSH"/>
                             <constraint firstItem="1Nb-gN-ZtD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oI4-OS-IJ9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
