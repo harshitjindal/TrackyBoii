@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         if notificationsRegistered {
+            print("Notifications Registered")
             registerDailyNotifications()
         }
         
