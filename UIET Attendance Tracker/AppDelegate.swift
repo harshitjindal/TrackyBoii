@@ -26,7 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         } catch {
             print(error.localizedDescription)
         }
-        registerDailyNotifications()
+        
+        let notificationsRegisteredKey = "enabled"
+        let defaults = UserDefaults.standard
+        var notificationsRegistered = defaults.bool(forKey: notificationsRegisteredKey)
+        if !notificationsRegistered {
+            defaults.set(true, forKey: notificationsRegisteredKey)
+        }
+        
+        if notificationsRegistered {
+            registerDailyNotifications()
+        }
+        
         return true
     }
 
@@ -87,4 +98,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
 }
-
