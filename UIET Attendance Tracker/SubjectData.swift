@@ -12,6 +12,7 @@ import RealmSwift
 class SubjectData: Object {
     @objc dynamic var date: Date = Date.init()
     @objc dynamic var subjectName: String = "nil"
+    @objc dynamic var subjectType: String = "nil"
     @objc dynamic var subjectStatus: String = "nil"
     
 }

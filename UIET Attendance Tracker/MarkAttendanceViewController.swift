@@ -27,25 +27,47 @@ class MarkAttendanceViewController: UIViewController {
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
-//        datePicker.setDate(Date.init(timeIntervalSince1970: 0), animated: false)
-//        datePicker.setDate(Date.init(), animated: true)
-        updateSubjects(weekDay)
+        updateSubjects(weekDay, reloadTableView: true)
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
         
         pickedDate = sender.date.addingTimeInterval(19800)
         weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate)
-//        print(weekDay)
+        //        print(weekDay)
         
-        updateSubjects(weekDay)
+        updateSubjects(weekDay, reloadTableView: true)
+        
+    }
+    
+    func generateNewEntry(cellIndex: Int, segmentedControlIndex: Int) {
+        let newEntry = SubjectData()
+        newEntry.date = pickedDate
+        self.updateSubjects(weekDay, reloadTableView: false)
+        newEntry.subjectName = self.subjectNameString![cellIndex]
+        newEntry.subjectType = self.subjectTypeString![cellIndex]
+        switch segmentedControlIndex {
+        case 0:
+            newEntry.subjectStatus = "Attended"
+        case 1:
+            newEntry.subjectStatus = "Missed"
+        case 2:
+            newEntry.subjectStatus = "Mass Bunk"
+        case 3:
+            newEntry.subjectStatus = "No Lecture"
+        default:
+            return
+        }
+        
+        print(newEntry)
+        saveData(date: pickedDate, entry: newEntry)
     }
     
 }
 
 extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func updateSubjects(_ day: Int) {
+    func updateSubjects(_ day: Int, reloadTableView: Bool) {
         switch day {
         case 2:
             subjectNameString = ["Database Management Systems", "Network Security and Cryptography", "Design and Analysis of Algorithms", "Python", "Network Security and Cryptography", "Design and Analysis of Algorithms"]
@@ -66,8 +88,10 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
             subjectNameString = ["NIL"]
             subjectTypeString = ["NIL"]
         }
-        //TODO: - RELOAD TABLEVIEW
-        tableView.reloadData()
+        
+        if reloadTableView == true {
+            tableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,8 +119,14 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
 
 // TODO: - DATA HANDLING METHODS
 extension MarkAttendanceViewController {
-    func saveData(date: Date) {
-        
+    func saveData(date: Date, entry: SubjectData) {
+        do {
+            try realm.write {
+                realm.add(entry)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     func loadData(date: Date) {
@@ -111,5 +141,9 @@ class SubjectTableViewCell: UITableViewCell {
     @IBOutlet var segmentControlOutlet: UISegmentedControl!
     @IBAction func segmentedControlIndex(_ sender: UISegmentedControl) {
         print("Cell \(sender.tag + 1) modified to \(sender.selectedSegmentIndex + 1)")
+        
+        //TODO:- Create SubjectData Entry
+        let markAttendanceViewController = MarkAttendanceViewController()
+        markAttendanceViewController.generateNewEntry(cellIndex: sender.tag, segmentedControlIndex: sender.selectedSegmentIndex)
     }
 }

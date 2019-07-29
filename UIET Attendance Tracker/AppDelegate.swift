@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         do {
-//            print(Realm.Configuration.defaultConfiguration.fileURL)
+            print(Realm.Configuration.defaultConfiguration.fileURL)
             _ = try Realm()
         } catch {
             print(error.localizedDescription)
