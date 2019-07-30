@@ -18,6 +18,7 @@ class MarkAttendanceViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     
     var pickedDate: Date = Date.init()
+    var stringDate: String = "NIL"
     var weekDay: Int = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
     var subjectNameString: Array<String>?
     var subjectTypeString: Array<String>?
@@ -33,10 +34,14 @@ class MarkAttendanceViewController: UIViewController {
     @IBAction func datePicker(_ sender: UIDatePicker) {
         
         pickedDate = sender.date.addingTimeInterval(19800)
+        stringDate = formatDate(pickedDate)
         weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate)
-        //        print(weekDay)
+        print(pickedDate)
+        print(stringDate)
+        print(weekDay)
         
         updateSubjects(weekDay, reloadTableView: true)
+        
         
     }
     
@@ -63,6 +68,11 @@ class MarkAttendanceViewController: UIViewController {
         saveData(date: pickedDate, entry: newEntry)
     }
     
+    func formatDate(_ pickedDate: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        return dateFormatter.string(from: pickedDate)
+    }
 }
 
 extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelegate {
