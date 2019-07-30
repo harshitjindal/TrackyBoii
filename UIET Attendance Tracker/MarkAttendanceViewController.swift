@@ -48,6 +48,7 @@ class MarkAttendanceViewController: UIViewController {
     func generateNewEntry(cellIndex: Int, segmentedControlIndex: Int) {
         let newEntry = SubjectData()
         newEntry.date = pickedDate
+        newEntry.stringDate = formatDate(pickedDate)
         self.updateSubjects(weekDay, reloadTableView: false)
         newEntry.subjectName = self.subjectNameString![cellIndex]
         newEntry.subjectType = self.subjectTypeString![cellIndex]
