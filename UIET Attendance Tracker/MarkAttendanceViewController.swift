@@ -38,6 +38,11 @@ class MarkAttendanceViewController: UIViewController {
         
         updateSubjects(weekDay, reloadTableView: true)
         
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd,yyyy"
+        print(dateFormatter.string(from: pickedDate))
+        
     }
     
     func generateNewEntry(cellIndex: Int, segmentedControlIndex: Int) {
