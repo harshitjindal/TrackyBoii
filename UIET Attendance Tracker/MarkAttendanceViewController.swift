@@ -42,6 +42,9 @@ class MarkAttendanceViewController: UIViewController {
         
         updateSubjects(weekDay, reloadTableView: true)
         
+//        let cell = SubjectTableViewCell()
+//        cell.clearSegmentControl()
+        
         
     }
     
@@ -156,5 +159,10 @@ class SubjectTableViewCell: UITableViewCell {
         //TODO:- Create SubjectData Entry
         let markAttendanceViewController = MarkAttendanceViewController()
         markAttendanceViewController.generateNewEntry(cellIndex: sender.tag, segmentedControlIndex: sender.selectedSegmentIndex)
+//        segmentControlOutlet.isMomentary = false
     }
+    
+//    func clearSegmentControl() {
+//        segmentControlOutlet.isMomentary = false
+//    }
 }
