@@ -57,13 +57,13 @@ class MarkAttendanceViewController: UIViewController {
         newEntry.subjectType = self.subjectTypeString![cellIndex]
         switch segmentedControlIndex {
         case 0:
-            newEntry.subjectStatus = "Attended"
-        case 1:
-            newEntry.subjectStatus = "Missed"
-        case 2:
-            newEntry.subjectStatus = "Mass Bunk"
-        case 3:
             newEntry.subjectStatus = "No Lecture"
+        case 1:
+            newEntry.subjectStatus = "Attended"
+        case 2:
+            newEntry.subjectStatus = "Missed"
+        case 3:
+            newEntry.subjectStatus = "Mass Bunk"
         default:
             return
         }
@@ -120,7 +120,7 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as! SubjectTableViewCell
         cell.SessionType.text = subjectTypeString![indexPath.row]
         cell.SessionName.text = subjectNameString![indexPath.row]
-        
+        cell.clearSegmentControl()
         cell.segmentControlOutlet.tag = indexPath.row
         return cell
     }
@@ -162,7 +162,7 @@ class SubjectTableViewCell: UITableViewCell {
 //        segmentControlOutlet.isMomentary = false
     }
     
-//    func clearSegmentControl() {
-//        segmentControlOutlet.isMomentary = false
-//    }
+    func clearSegmentControl() {
+        segmentControlOutlet.selectedSegmentIndex = 0
+    }
 }
