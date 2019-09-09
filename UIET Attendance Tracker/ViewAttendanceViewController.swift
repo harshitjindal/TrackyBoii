@@ -7,13 +7,27 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewAttendanceViewController: UIViewController {
 
+    let realm = try! Realm()
+    var selectedType = "Lecture"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
+    
+    @IBAction func segmentedControl(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            selectedType = "Lecture"
+        case 1:
+            selectedType = "Lab"
+        default: break
+        }
+    }
+    
 
 }
 
@@ -24,18 +38,36 @@ extension ViewAttendanceViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordsTableViewCell", for: indexPath) as! RecordsTableViewCell
-        switch indexPath.row {
-        case 0:
-            cell.subjectNameLabel.text = "Network Security and Cryptography"
-        case 1:
-            cell.subjectNameLabel.text = "Design and Analysis of Algorithms"
-        case 2:
-            cell.subjectNameLabel.text = "Database Management Systems"
-        case 3:
-            cell.subjectNameLabel.text = "Wireless Communication"
-        case 4:
-            cell.subjectNameLabel.text = "Python"
-        default: break
+        if selectedType == "Lecture" {
+            switch indexPath.row {
+            case 0:
+                cell.subjectNameLabel.text = "Network Security and Cryptography"
+            case 1:
+                cell.subjectNameLabel.text = "Design and Analysis of Algorithms"
+            case 2:
+                cell.subjectNameLabel.text = "Database Management Systems"
+            case 3:
+                cell.subjectNameLabel.text = "Wireless Communication"
+            case 4:
+                cell.subjectNameLabel.text = "Python"
+            default: break
+            }
+        }
+        
+        else if selectedType == "Lab" {
+            switch indexPath.row {
+            case 0:
+                cell.subjectNameLabel.text = "Network Security and Cryptography"
+            case 1:
+                cell.subjectNameLabel.text = "Design and Analysis of Algorithms"
+            case 2:
+                cell.subjectNameLabel.text = "Database Management Systems"
+            case 3:
+                cell.subjectNameLabel.text = "Wireless Communication"
+            case 4:
+                cell.subjectNameLabel.text = "Python"
+            default: break
+            }
         }
         return cell
     }

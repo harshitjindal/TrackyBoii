@@ -132,6 +132,9 @@
                                     <segment title="Lecture"/>
                                     <segment title="Lab"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControl:" destination="gEz-L3-8jM" eventType="valueChanged" id="B2w-sU-f10"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Attendance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JV9-vw-k0N">
                                 <rect key="frame" x="20" y="64" width="226" height="35"/>
