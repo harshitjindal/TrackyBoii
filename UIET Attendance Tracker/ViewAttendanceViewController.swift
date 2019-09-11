@@ -57,14 +57,12 @@ extension ViewAttendanceViewController: UITableViewDelegate, UITableViewDataSour
         else if selectedType == "Lab" {
             switch indexPath.row {
             case 0:
-                cell.subjectNameLabel.text = "Network Security and Cryptography"
-            case 1:
                 cell.subjectNameLabel.text = "Design and Analysis of Algorithms"
-            case 2:
+            case 1:
                 cell.subjectNameLabel.text = "Database Management Systems"
-            case 3:
+            case 2:
                 cell.subjectNameLabel.text = "Wireless Communication"
-            case 4:
+            case 3:
                 cell.subjectNameLabel.text = "Python"
             default: break
             }
