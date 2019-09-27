@@ -10,6 +10,8 @@ import UIKit
 import UserNotifications
 import RealmSwift
 
+var weekDay: Int?
+
 class MarkAttendanceViewController: UIViewController {
     
     let realm = try! Realm()
@@ -19,7 +21,7 @@ class MarkAttendanceViewController: UIViewController {
     
     var pickedDate: Date = Date.init()
     var stringDate: String = "NIL"
-    var weekDay: Int = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
+    
     var subjectNameString: Array<String>?
     var subjectTypeString: Array<String>?
     
@@ -28,7 +30,8 @@ class MarkAttendanceViewController: UIViewController {
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
-        updateSubjects(weekDay, reloadTableView: true)
+        weekDay = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
+        updateSubjects(weekDay!, reloadTableView: true)
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
@@ -38,19 +41,19 @@ class MarkAttendanceViewController: UIViewController {
         weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate)
         print(pickedDate)
         print(stringDate)
-        print(weekDay)
+        print(weekDay!)
         
-        updateSubjects(weekDay, reloadTableView: true)
-        
+        updateSubjects(weekDay!, reloadTableView: true)
+//        loadData(stringDate)
 //        let cell = SubjectTableViewCell()
 //        cell.clearSegmentControl()
         
         
     }
     
-    func generateNewEntry(cellIndex: Int, segmentedControlIndex: Int) {
+    func generateNewEntry(weekDay: Int, cellIndex: Int, segmentedControlIndex: Int) {
         let newEntry = SubjectData()
-        newEntry.date = pickedDate
+//        newEntry.date = pickedDate
         newEntry.stringDate = formatDate(pickedDate)
         self.updateSubjects(weekDay, reloadTableView: false)
         newEntry.subjectName = self.subjectNameString![cellIndex]
@@ -158,7 +161,7 @@ class SubjectTableViewCell: UITableViewCell {
         
         //TODO:- Create SubjectData Entry
         let markAttendanceViewController = MarkAttendanceViewController()
-        markAttendanceViewController.generateNewEntry(cellIndex: sender.tag, segmentedControlIndex: sender.selectedSegmentIndex)
+        markAttendanceViewController.generateNewEntry(weekDay: weekDay! ,cellIndex: sender.tag, segmentedControlIndex: sender.selectedSegmentIndex)
 //        segmentControlOutlet.isMomentary = false
     }
     
