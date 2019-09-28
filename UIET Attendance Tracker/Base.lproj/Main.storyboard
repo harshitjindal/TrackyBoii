@@ -165,22 +165,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mass Bunks:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRB-kS-bEU">
-                                                    <rect key="frame" x="266.5" y="40.5" width="96.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="35E-9u-1NR">
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="35E-9u-1NR">
                                                     <rect key="frame" x="20" y="83" width="343" height="2"/>
                                                 </progressView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="sRB-kS-bEU" secondAttribute="trailing" constant="20" id="0yd-XN-xY3"/>
                                                 <constraint firstAttribute="trailing" secondItem="35E-9u-1NR" secondAttribute="trailing" constant="20" id="IPW-wd-BSs"/>
                                                 <constraint firstItem="Rdt-tK-j1V" firstAttribute="leading" secondItem="WIU-wP-kCN" secondAttribute="leading" id="WWI-Lq-qha"/>
                                                 <constraint firstItem="WIU-wP-kCN" firstAttribute="leading" secondItem="T57-88-zVv" secondAttribute="leading" constant="20" id="Ztg-Tg-gYu"/>
-                                                <constraint firstItem="sRB-kS-bEU" firstAttribute="centerY" secondItem="Rdt-tK-j1V" secondAttribute="centerY" id="dMz-YO-RwZ"/>
                                                 <constraint firstItem="Rdt-tK-j1V" firstAttribute="top" secondItem="WIU-wP-kCN" secondAttribute="bottom" constant="10" id="hL1-mG-sR3"/>
                                                 <constraint firstAttribute="bottom" secondItem="35E-9u-1NR" secondAttribute="bottom" constant="15" id="nw8-jE-xkf"/>
                                                 <constraint firstItem="35E-9u-1NR" firstAttribute="leading" secondItem="Rdt-tK-j1V" secondAttribute="leading" id="ute-Sr-x0I"/>
@@ -188,8 +180,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="attendaceLabel" destination="Rdt-tK-j1V" id="XhU-Cy-gKe"/>
-                                            <outlet property="massBunksLabel" destination="sRB-kS-bEU" id="Q8t-v6-p8z"/>
+                                            <outlet property="attendanceLabel" destination="Rdt-tK-j1V" id="XhU-Cy-gKe"/>
                                             <outlet property="progressBar" destination="35E-9u-1NR" id="jLY-Ym-rnf"/>
                                             <outlet property="subjectNameLabel" destination="WIU-wP-kCN" id="Qu0-QT-JG1"/>
                                         </connections>

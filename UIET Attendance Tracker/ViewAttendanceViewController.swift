@@ -17,6 +17,7 @@ class ViewAttendanceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.reloadData()
     }
     
     @IBAction func segmentedControl(_ sender: UISegmentedControl) {
@@ -42,20 +43,41 @@ extension ViewAttendanceViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordsTableViewCell", for: indexPath) as! RecordsTableViewCell
+        cell.progressBar.setProgress(0.0, animated: false)
+        cell.attendanceLabel.text = "Attendance:"
         if selectedType == "Lecture" {
             switch indexPath.row {
             case 0:
                 cell.subjectNameLabel.text = "Network Security and Cryptography"
-                let results = realm.objects(SubjectData.self).filter("subjectName == 'Network Security and Cryptography' AND subjectType == 'Lecture' AND subjectStatus == 'Attended' ")
-                print(results)
+                let attendance = Float(realm.objects(SubjectData.self).filter("subjectName == 'Network Security and Cryptography' AND subjectType == 'Lecture' AND subjectStatus == 'Attended' ").count) / Float(realm.objects(SubjectData.self).filter("subjectName == 'Network Security and Cryptography' AND subjectType == 'Lecture' AND subjectStatus IN {'Attended', 'Missed'}").count)
+                print(attendance)
+                cell.attendanceLabel.text = "Attendance: " + String(format: "%.01f", attendance * 100) + "%"
+                cell.progressBar.setProgress(attendance, animated: true)
+                
             case 1:
                 cell.subjectNameLabel.text = "Design and Analysis of Algorithms"
+                let attendance = Float(realm.objects(SubjectData.self).filter("subjectName == 'Design and Analysis of Algorithms' AND subjectType == 'Lecture' AND subjectStatus == 'Attended' ").count) / Float(realm.objects(SubjectData.self).filter("subjectName == 'Design and Analysis of Algorithms' AND subjectType == 'Lecture' AND subjectStatus IN {'Attended', 'Missed'}").count)
+                print(attendance)
+                cell.attendanceLabel.text = "Attendance: " + String(format: "%.01f", attendance * 100) + "%"
+                cell.progressBar.setProgress(attendance, animated: true)
             case 2:
                 cell.subjectNameLabel.text = "Database Management Systems"
+                let attendance = Float(realm.objects(SubjectData.self).filter("subjectName == 'Database Management Systems' AND subjectType == 'Lecture' AND subjectStatus == 'Attended' ").count) / Float(realm.objects(SubjectData.self).filter("subjectName == 'Database Management Systems' AND subjectType == 'Lecture' AND subjectStatus IN {'Attended', 'Missed'}").count)
+                print(attendance)
+                cell.attendanceLabel.text = "Attendance: " + String(format: "%.01f", attendance * 100) + "%"
+                cell.progressBar.setProgress(attendance, animated: true)
             case 3:
                 cell.subjectNameLabel.text = "Wireless Communication"
+                let attendance = Float(realm.objects(SubjectData.self).filter("subjectName == 'Wireless Communication' AND subjectType == 'Lecture' AND subjectStatus == 'Attended' ").count) / Float(realm.objects(SubjectData.self).filter("subjectName == 'Wireless Communication' AND subjectType == 'Lecture' AND subjectStatus IN {'Attended', 'Missed'}").count)
+                print(attendance)
+                cell.attendanceLabel.text = "Attendance: " + String(format: "%.01f", attendance * 100) + "%"
+                cell.progressBar.setProgress(attendance, animated: true)
             case 4:
                 cell.subjectNameLabel.text = "Python"
+                let attendance = Float(realm.objects(SubjectData.self).filter("subjectName == 'Python' AND subjectType == 'Lecture' AND subjectStatus == 'Attended' ").count) / Float(realm.objects(SubjectData.self).filter("subjectName == 'Python' AND subjectType == 'Lecture' AND subjectStatus IN {'Attended', 'Missed'}").count)
+                print(attendance)
+                cell.attendanceLabel.text = "Attendance: " + String(format: "%.01f", attendance * 100) + "%"
+                cell.progressBar.setProgress(attendance, animated: true)
             default: break
             }
         }
@@ -64,12 +86,28 @@ extension ViewAttendanceViewController: UITableViewDelegate, UITableViewDataSour
             switch indexPath.row {
             case 0:
                 cell.subjectNameLabel.text = "Design and Analysis of Algorithms"
+                let attendance = Float(realm.objects(SubjectData.self).filter("subjectName == 'Design and Analysis of Algorithms' AND subjectType == 'Lab' AND subjectStatus == 'Attended' ").count) / Float(realm.objects(SubjectData.self).filter("subjectName == 'Design and Analysis of Algorithms' AND subjectType == 'Lab' AND subjectStatus IN {'Attended', 'Missed'}").count)
+                print(attendance)
+                cell.attendanceLabel.text = "Attendance: " + String(format: "%.01f", attendance * 100) + "%"
+                cell.progressBar.setProgress(attendance, animated: true)
             case 1:
                 cell.subjectNameLabel.text = "Database Management Systems"
+                let attendance = Float(realm.objects(SubjectData.self).filter("subjectName == 'Database Management Systems' AND subjectType == 'Lab' AND subjectStatus == 'Attended' ").count) / Float(realm.objects(SubjectData.self).filter("subjectName == 'Database Management Systems' AND subjectType == 'Lab' AND subjectStatus IN {'Attended', 'Missed'}").count)
+                print(attendance)
+                cell.attendanceLabel.text = "Attendance: " + String(format: "%.01f", attendance * 100) + "%"
+                cell.progressBar.setProgress(attendance, animated: true)
             case 2:
                 cell.subjectNameLabel.text = "Wireless Communication"
+                let attendance = Float(realm.objects(SubjectData.self).filter("subjectName == 'Wireless Communication' AND subjectType == 'Lab' AND subjectStatus == 'Attended' ").count) / Float(realm.objects(SubjectData.self).filter("subjectName == 'Wireless Communication' AND subjectType == 'Lab' AND subjectStatus IN {'Attended', 'Missed'}").count)
+                print(attendance)
+                cell.attendanceLabel.text = "Attendance: " + String(format: "%.01f", attendance * 100) + "%"
+                cell.progressBar.setProgress(attendance, animated: true)
             case 3:
                 cell.subjectNameLabel.text = "Python"
+                let attendance = Float(realm.objects(SubjectData.self).filter("subjectName == 'Python' AND subjectType == 'Lab' AND subjectStatus == 'Attended' ").count) / Float(realm.objects(SubjectData.self).filter("subjectName == 'Python' AND subjectType == 'Lab' AND subjectStatus IN {'Attended', 'Missed'}").count)
+                print(attendance)
+                cell.attendanceLabel.text = "Attendance: " + String(format: "%.01f", attendance * 100) + "%"
+                cell.progressBar.setProgress(attendance, animated: true)
             default: break
             }
         }
@@ -85,8 +123,7 @@ extension ViewAttendanceViewController: UITableViewDelegate, UITableViewDataSour
 
 class RecordsTableViewCell: UITableViewCell {
     @IBOutlet weak var subjectNameLabel: UILabel!
-    @IBOutlet weak var attendaceLabel: UILabel!
-    @IBOutlet weak var massBunksLabel: UILabel!
+    @IBOutlet weak var attendanceLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     
 }
