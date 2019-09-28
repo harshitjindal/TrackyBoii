@@ -10,7 +10,11 @@ import UIKit
 import UserNotifications
 import RealmSwift
 
+var pickedDate: Date?
 var weekDay: Int?
+var stringDate: String?
+var subjectNameString: Array<String>?
+var subjectTypeString: Array<String>?
 
 class MarkAttendanceViewController: UIViewController {
     
@@ -19,17 +23,14 @@ class MarkAttendanceViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var datePicker: UIDatePicker!
     
-    var pickedDate: Date = Date.init()
-    var stringDate: String = "NIL"
-    
-    var subjectNameString: Array<String>?
-    var subjectTypeString: Array<String>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
+        pickedDate = Date.init()
+        stringDate = formatDate(pickedDate!)
         weekDay = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
         updateSubjects(weekDay!, reloadTableView: true)
     }
@@ -37,14 +38,14 @@ class MarkAttendanceViewController: UIViewController {
     @IBAction func datePicker(_ sender: UIDatePicker) {
         
         pickedDate = sender.date.addingTimeInterval(19800)
-        stringDate = formatDate(pickedDate)
-        weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate)
-        print(pickedDate)
-        print(stringDate)
+        stringDate = formatDate(pickedDate!)
+        weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate!)
+        print(pickedDate!)
+        print(stringDate!)
         print(weekDay!)
         
         updateSubjects(weekDay!, reloadTableView: true)
-//        loadData(stringDate)
+        loadData(stringDate!)
 //        let cell = SubjectTableViewCell()
 //        cell.clearSegmentControl()
         
@@ -54,10 +55,10 @@ class MarkAttendanceViewController: UIViewController {
     func generateNewEntry(weekDay: Int, cellIndex: Int, segmentedControlIndex: Int) {
         let newEntry = SubjectData()
 //        newEntry.date = pickedDate
-        newEntry.stringDate = formatDate(pickedDate)
+        newEntry.stringDate = formatDate(pickedDate!)
         self.updateSubjects(weekDay, reloadTableView: false)
-        newEntry.subjectName = self.subjectNameString![cellIndex]
-        newEntry.subjectType = self.subjectTypeString![cellIndex]
+        newEntry.subjectName = subjectNameString![cellIndex]
+        newEntry.subjectType = subjectTypeString![cellIndex]
         switch segmentedControlIndex {
         case 0:
             newEntry.subjectStatus = "No Lecture"
@@ -72,7 +73,7 @@ class MarkAttendanceViewController: UIViewController {
         }
         
         print(newEntry)
-        saveData(date: pickedDate, entry: newEntry)
+        saveData(date: pickedDate!, entry: newEntry)
     }
     
     func formatDate(_ pickedDate: Date) -> String {
@@ -146,8 +147,9 @@ extension MarkAttendanceViewController {
         }
     }
     
-    func loadData(date: Date) {
-        
+    func loadData(_ stringDate: String) {
+        let results = realm.objects(SubjectData.self).filter("stringDate LIKE[c] %@", stringDate)
+        print(results)
     }
 }
 

@@ -46,6 +46,8 @@ extension ViewAttendanceViewController: UITableViewDelegate, UITableViewDataSour
             switch indexPath.row {
             case 0:
                 cell.subjectNameLabel.text = "Network Security and Cryptography"
+                let results = realm.objects(SubjectData.self).filter("subjectName == 'Network Security and Cryptography' AND subjectType == 'Lecture' AND subjectStatus == 'Attended' ")
+                print(results)
             case 1:
                 cell.subjectNameLabel.text = "Design and Analysis of Algorithms"
             case 2:
