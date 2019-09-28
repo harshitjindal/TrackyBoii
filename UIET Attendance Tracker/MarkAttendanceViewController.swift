@@ -10,6 +10,12 @@ import UIKit
 import UserNotifications
 import RealmSwift
 
+var pickedDate: Date?
+var weekDay: Int?
+var stringDate: String?
+var subjectNameString: Array<String>?
+var subjectTypeString: Array<String>?
+
 class MarkAttendanceViewController: UIViewController {
     
     let realm = try! Realm()
@@ -17,26 +23,32 @@ class MarkAttendanceViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var datePicker: UIDatePicker!
     
-    var pickedDate: Date = Date.init()
-    var weekDay: Int = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
-    var subjectNameString: Array<String>?
-    var subjectTypeString: Array<String>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
-        updateSubjects(weekDay, reloadTableView: true)
+        pickedDate = Date.init()
+        stringDate = formatDate(pickedDate!)
+        weekDay = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
+        updateSubjects(weekDay!, reloadTableView: true)
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
         
         pickedDate = sender.date.addingTimeInterval(19800)
-        weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate)
-        //        print(weekDay)
+        stringDate = formatDate(pickedDate!)
+        weekDay = Calendar(identifier: .gregorian).component(.weekday, from: pickedDate!)
+        print(pickedDate!)
+        print(stringDate!)
+        print(weekDay!)
         
-        updateSubjects(weekDay, reloadTableView: true)
+        updateSubjects(weekDay!, reloadTableView: true)
+        loadData(stringDate!)
+//        let cell = SubjectTableViewCell()
+//        cell.clearSegmentControl()
+        
         
         
         let dateFormatter = DateFormatter()
@@ -45,29 +57,35 @@ class MarkAttendanceViewController: UIViewController {
         
     }
     
-    func generateNewEntry(cellIndex: Int, segmentedControlIndex: Int) {
+    func generateNewEntry(weekDay: Int, cellIndex: Int, segmentedControlIndex: Int) {
         let newEntry = SubjectData()
-        newEntry.date = pickedDate
+//        newEntry.date = pickedDate
+        newEntry.stringDate = formatDate(pickedDate!)
         self.updateSubjects(weekDay, reloadTableView: false)
-        newEntry.subjectName = self.subjectNameString![cellIndex]
-        newEntry.subjectType = self.subjectTypeString![cellIndex]
+        newEntry.subjectName = subjectNameString![cellIndex]
+        newEntry.subjectType = subjectTypeString![cellIndex]
         switch segmentedControlIndex {
         case 0:
-            newEntry.subjectStatus = "Attended"
-        case 1:
-            newEntry.subjectStatus = "Missed"
-        case 2:
-            newEntry.subjectStatus = "Mass Bunk"
-        case 3:
             newEntry.subjectStatus = "No Lecture"
+        case 1:
+            newEntry.subjectStatus = "Attended"
+        case 2:
+            newEntry.subjectStatus = "Missed"
+        case 3:
+            newEntry.subjectStatus = "Mass Bunk"
         default:
             return
         }
         
         print(newEntry)
-        saveData(date: pickedDate, entry: newEntry)
+        saveData(date: pickedDate!, entry: newEntry)
     }
     
+    func formatDate(_ pickedDate: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        return dateFormatter.string(from: pickedDate)
+    }
 }
 
 extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelegate {
@@ -111,7 +129,7 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as! SubjectTableViewCell
         cell.SessionType.text = subjectTypeString![indexPath.row]
         cell.SessionName.text = subjectNameString![indexPath.row]
-        
+        cell.clearSegmentControl()
         cell.segmentControlOutlet.tag = indexPath.row
         return cell
     }
@@ -134,8 +152,9 @@ extension MarkAttendanceViewController {
         }
     }
     
-    func loadData(date: Date) {
-        
+    func loadData(_ stringDate: String) {
+        let results = realm.objects(SubjectData.self).filter("stringDate LIKE[c] %@", stringDate)
+        print(results)
     }
 }
 
@@ -149,6 +168,11 @@ class SubjectTableViewCell: UITableViewCell {
         
         //TODO:- Create SubjectData Entry
         let markAttendanceViewController = MarkAttendanceViewController()
-        markAttendanceViewController.generateNewEntry(cellIndex: sender.tag, segmentedControlIndex: sender.selectedSegmentIndex)
+        markAttendanceViewController.generateNewEntry(weekDay: weekDay! ,cellIndex: sender.tag, segmentedControlIndex: sender.selectedSegmentIndex)
+//        segmentControlOutlet.isMomentary = false
+    }
+    
+    func clearSegmentControl() {
+        segmentControlOutlet.selectedSegmentIndex = 0
     }
 }
