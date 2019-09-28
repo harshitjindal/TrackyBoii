@@ -53,7 +53,7 @@ class MarkAttendanceViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd,yyyy"
-        print(dateFormatter.string(from: pickedDate))
+        print(dateFormatter.string(from: pickedDate!))
         
     }
     
