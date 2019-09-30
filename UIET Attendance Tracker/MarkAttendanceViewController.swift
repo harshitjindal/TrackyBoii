@@ -61,27 +61,51 @@ class MarkAttendanceViewController: UIViewController {
     }
     
     func generateNewEntry(weekDay: Int, cellIndex: Int, segmentedControlIndex: Int) {
-        let newEntry = SubjectData()
-//        newEntry.date = pickedDate
-        newEntry.stringDate = formatDate(pickedDate!)
-        self.updateSubjects(weekDay, reloadTableView: false)
-        newEntry.subjectName = subjectNameString![cellIndex]
-        newEntry.subjectType = subjectTypeString![cellIndex]
-        switch segmentedControlIndex {
-        case 0:
-            newEntry.subjectStatus = "No Lecture"
-        case 1:
-            newEntry.subjectStatus = "Attended"
-        case 2:
-            newEntry.subjectStatus = "Missed"
-        case 3:
-            newEntry.subjectStatus = "Mass Bunk"
-        default:
-            return
-        }
         
-        print(newEntry)
-        saveData(date: pickedDate!, entry: newEntry)
+        let result = (loadedResults?.filter("subjectName LIKE %@ AND subjectType like %@", subjectNameString![cellIndex], subjectTypeString![cellIndex]))
+        if result?.count != 0 {
+            do {
+                try realm.write() {
+                    switch segmentedControlIndex {
+                    case 0:
+                        result?.setValue("No Lecture", forKey: "subjectStatus")
+                    case 1:
+                        result?.setValue("Attended", forKey: "subjectStatus")
+                    case 2:
+                        result?.setValue("Missed", forKey: "subjectStatus")
+                    case 3:
+                        result?.setValue("Mass Bunk", forKey: "subjectStatus")
+                    default:
+                        return
+                    }
+                    print("Updating duplicate entry")
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        } else  {
+            let newEntry = SubjectData()
+            
+            newEntry.stringDate = formatDate(pickedDate!)
+            self.updateSubjects(weekDay, reloadTableView: false)
+            newEntry.subjectName = subjectNameString![cellIndex]
+            newEntry.subjectType = subjectTypeString![cellIndex]
+            
+            switch segmentedControlIndex {
+            case 0:
+                newEntry.subjectStatus = "No Lecture"
+            case 1:
+                newEntry.subjectStatus = "Attended"
+            case 2:
+                newEntry.subjectStatus = "Missed"
+            case 3:
+                newEntry.subjectStatus = "Mass Bunk"
+            default:
+                return
+            }
+            saveData(date: pickedDate!, entry: newEntry)
+            print(newEntry)
+        }
     }
     
     func formatDate(_ pickedDate: Date) -> String {
@@ -176,7 +200,7 @@ extension MarkAttendanceViewController {
     func loadData(_ stringDate: String) {
         loadedResults = realm.objects(SubjectData.self).filter("stringDate LIKE[c] %@", stringDate)
         if loadedResults?.count != 0 {
-            print(loadedResults)
+            print(loadedResults!)
         }
     }
 }
@@ -192,7 +216,6 @@ class SubjectTableViewCell: UITableViewCell {
         //TODO:- Create SubjectData Entry
         let markAttendanceViewController = MarkAttendanceViewController()
         markAttendanceViewController.generateNewEntry(weekDay: weekDay! ,cellIndex: sender.tag, segmentedControlIndex: sender.selectedSegmentIndex)
-//        segmentControlOutlet.isMomentary = false
     }
     
     func modifySegmentControl(index: Int) {
