@@ -16,6 +16,8 @@ var stringDate: String?
 var subjectNameString: Array<String>?
 var subjectTypeString: Array<String>?
 
+var loadedResults: Results<SubjectData>? = nil
+
 class MarkAttendanceViewController: UIViewController {
     
     let realm = try! Realm()
@@ -33,6 +35,7 @@ class MarkAttendanceViewController: UIViewController {
         stringDate = formatDate(pickedDate!)
         weekDay = Calendar(identifier: .gregorian).component(.weekday, from: Date.init())
         updateSubjects(weekDay!, reloadTableView: true)
+        loadData(stringDate!)
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
@@ -129,8 +132,26 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as! SubjectTableViewCell
         cell.SessionType.text = subjectTypeString![indexPath.row]
         cell.SessionName.text = subjectNameString![indexPath.row]
-        cell.clearSegmentControl()
         cell.segmentControlOutlet.tag = indexPath.row
+        
+        if loadedResults?.count == 0 {
+            cell.modifySegmentControl(index: 0)
+        } else {
+            if loadedResults?.filter("subjectName LIKE %@ AND subjectType like %@", subjectNameString![indexPath.row], subjectTypeString![indexPath.row]).count != 0 {
+                switch loadedResults![indexPath.row].subjectStatus {
+                case "No Lecture":
+                    cell.modifySegmentControl(index: 0)
+                case "Attended":
+                    cell.modifySegmentControl(index: 1)
+                case "Missed":
+                    cell.modifySegmentControl(index: 2)
+                case "Mass Bunk":
+                    cell.modifySegmentControl(index: 3)
+                default:
+                    break
+                }
+            }
+        }
         return cell
     }
     
@@ -153,8 +174,10 @@ extension MarkAttendanceViewController {
     }
     
     func loadData(_ stringDate: String) {
-        let results = realm.objects(SubjectData.self).filter("stringDate LIKE[c] %@", stringDate)
-        print(results)
+        loadedResults = realm.objects(SubjectData.self).filter("stringDate LIKE[c] %@", stringDate)
+        if loadedResults?.count != 0 {
+            print(loadedResults)
+        }
     }
 }
 
@@ -172,7 +195,7 @@ class SubjectTableViewCell: UITableViewCell {
 //        segmentControlOutlet.isMomentary = false
     }
     
-    func clearSegmentControl() {
-        segmentControlOutlet.selectedSegmentIndex = 0
+    func modifySegmentControl(index: Int) {
+        segmentControlOutlet.selectedSegmentIndex = index
     }
 }
