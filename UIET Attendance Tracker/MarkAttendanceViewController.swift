@@ -103,6 +103,7 @@ class MarkAttendanceViewController: UIViewController {
             default:
                 return
             }
+            newEntry.setByUser = true
             saveData(date: pickedDate!, entry: newEntry)
             print(newEntry)
         }
@@ -161,8 +162,8 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
         if loadedResults?.count == 0 {
             cell.modifySegmentControl(index: 0)
         } else {
-            if loadedResults?.filter("subjectName LIKE %@ AND subjectType like %@", subjectNameString![indexPath.row], subjectTypeString![indexPath.row]).count != 0 {
-                switch loadedResults![indexPath.row].subjectStatus {
+            if let loadedResultIndex = loadedResults?.index(matching: "subjectName LIKE %@ AND subjectType like %@", subjectNameString![indexPath.row], subjectTypeString![indexPath.row]) {
+                switch loadedResults![loadedResultIndex].subjectStatus {
                 case "No Lecture":
                     cell.modifySegmentControl(index: 0)
                 case "Attended":
@@ -176,6 +177,8 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
                 }
             }
         }
+        
+        
         return cell
     }
     
@@ -198,7 +201,7 @@ extension MarkAttendanceViewController {
     }
     
     func loadData(_ stringDate: String) {
-        loadedResults = realm.objects(SubjectData.self).filter("stringDate LIKE[c] %@", stringDate)
+        loadedResults = realm.objects(SubjectData.self).filter("stringDate LIKE[c] %@ AND setByUser == true", stringDate)
         if loadedResults?.count != 0 {
             print(loadedResults!)
         }
