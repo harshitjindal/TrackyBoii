@@ -64,7 +64,6 @@
                                                         <segment title="No Lecture"/>
                                                         <segment title="Attended"/>
                                                         <segment title="Missed"/>
-                                                        <segment title="Mass Bunk"/>
                                                     </segments>
                                                     <connections>
                                                         <action selector="segmentedControlIndex:" destination="tv7-Pz-ajS" eventType="valueChanged" id="oFs-DC-097"/>

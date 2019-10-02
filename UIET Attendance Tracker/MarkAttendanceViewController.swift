@@ -21,7 +21,7 @@ var loadedResults: Results<SubjectData>? = nil
 class MarkAttendanceViewController: UIViewController {
     
     let realm = try! Realm()
-
+    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var datePicker: UIDatePicker!
     
@@ -49,8 +49,8 @@ class MarkAttendanceViewController: UIViewController {
         
         updateSubjects(weekDay!, reloadTableView: true)
         loadData(stringDate!)
-//        let cell = SubjectTableViewCell()
-//        cell.clearSegmentControl()
+        //        let cell = SubjectTableViewCell()
+        //        cell.clearSegmentControl()
         
         
         
@@ -73,8 +73,6 @@ class MarkAttendanceViewController: UIViewController {
                         result?.setValue("Attended", forKey: "subjectStatus")
                     case 2:
                         result?.setValue("Missed", forKey: "subjectStatus")
-                    case 3:
-                        result?.setValue("Mass Bunk", forKey: "subjectStatus")
                     default:
                         return
                     }
@@ -98,11 +96,10 @@ class MarkAttendanceViewController: UIViewController {
                 newEntry.subjectStatus = "Attended"
             case 2:
                 newEntry.subjectStatus = "Missed"
-            case 3:
-                newEntry.subjectStatus = "Mass Bunk"
             default:
                 return
             }
+            
             newEntry.setByUser = true
             saveData(date: pickedDate!, entry: newEntry)
             print(newEntry)
@@ -158,10 +155,8 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
         cell.SessionType.text = subjectTypeString![indexPath.row]
         cell.SessionName.text = subjectNameString![indexPath.row]
         cell.segmentControlOutlet.tag = indexPath.row
-        
-        if loadedResults?.count == 0 {
-            cell.modifySegmentControl(index: 0)
-        } else {
+        cell.modifySegmentControl(index: 0)
+        if loadedResults?.count != 0 {
             if let loadedResultIndex = loadedResults?.index(matching: "subjectName LIKE %@ AND subjectType like %@", subjectNameString![indexPath.row], subjectTypeString![indexPath.row]) {
                 switch loadedResults![loadedResultIndex].subjectStatus {
                 case "No Lecture":
@@ -170,8 +165,6 @@ extension MarkAttendanceViewController: UITableViewDataSource, UITableViewDelega
                     cell.modifySegmentControl(index: 1)
                 case "Missed":
                     cell.modifySegmentControl(index: 2)
-                case "Mass Bunk":
-                    cell.modifySegmentControl(index: 3)
                 default:
                     break
                 }
